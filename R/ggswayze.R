@@ -15,7 +15,8 @@ draw_key_swayze <-  function(data, params, size) {
 
 # swayzeGrob
 swayzeGrob <- function(x, y, size, swayze = "breaking", geom_key = list(breaking = "breaking.png",
-                                                                        housing  = "housing.png")) {
+                                                                        housing  = "housing.png",
+                                                                        hyde     = "hyde.png")) {
 
   filename <- system.file(geom_key[[unique(swayze)]], package = "ggswayze", mustWork = TRUE)
   img <- as.raster(png::readPNG(filename))
@@ -66,6 +67,10 @@ GeomSwayze <- ggplot2::ggproto(`_class` = "GeomSwayze",
 #'
 #' ggplot(mtcars) +
 #'  geom_swayze(aes(mpg, wt), swayze = "housing") +
+#'  theme_bw()
+#'
+#' ggplot(mtcars) +
+#'  geom_swayze(aes(mpg, wt), swayze = "hyde") +
 #'  theme_bw()
 #'
 #' @importFrom grDevices as.raster
